@@ -2,11 +2,11 @@ An example project that demonstrates sending large files via SOAP with attachmen
 
 ### Structure
 
-mtom-soap-client — the client based on Apache CXF
+`mtom-soap-client` — the client based on Apache CXF
 
-mtom-soap-common — WSDL schema of the service, build-time generated JAXB2 and CXF classes
+`mtom-soap-common` — WSDL schema of the service, build-time generated JAXB2 and CXF classes
 
-mtom-soap-server — the server application based on Spring Web Services and SAAJ
+`mtom-soap-server` — the server application based on Spring Web Services and SAAJ
 
 ### Software
 
@@ -15,9 +15,9 @@ mtom-soap-server — the server application based on Spring Web Services and SA
 
 ### Configuration
 
-mtom-soap-server/src/main/resources/settings.properties — the upload.path property sets the directory for the server to upload files to. It refers to the Apache Tomcat temp folder by default.
+`mtom-soap-server/src/main/resources/settings.properties` — the `upload.path` property sets the directory for the server to upload files to. It refers to the Apache Tomcat temp folder by default.
 
-mtom-soap-common/src/main/resources/service.wsdl — the port binding refers to URL http://localhost:8080/server/ which is the expected URL of the server application.
+`mtom-soap-common/src/main/resources/service.wsdl` — the port binding refers to URL http://localhost:8080/server/ which is the expected URL of the server application.
 
 ### Running the example
 
