@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:tns="http://forketyfork.ru/mtomsoap/schema"
+                  targetNamespace="http://forketyfork.ru/mtomsoap/schema">
+
+    <wsdl:types>
+        <s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" >
+            <s:import namespace="http://forketyfork.ru/mtomsoap/schema" schemaLocation="schema.xsd" />
+        </s:schema>
+    </wsdl:types>
+
+    <wsdl:message name="SampleRequest">
+        <wsdl:part element="tns:SampleRequest" name="SampleRequest">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="SampleResponse">
+        <wsdl:part element="tns:SampleResponse" name="SampleResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="Sample">
+        <wsdl:operation name="Sample">
+            <wsdl:input message="tns:SampleRequest" name="SampleRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:SampleResponse" name="SampleResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="SampleSoap12" type="tns:Sample">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Sample">
+            <soap12:operation soapAction=""/>
+            <wsdl:input name="SampleRequest">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="SampleResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="SampleService">
+        <wsdl:port binding="tns:SampleSoap12" name="SampleSoap12">
+            <soap12:address location="http://localhost:8080/server/"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

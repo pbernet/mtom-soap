@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<s:schema elementFormDefault="qualified"
+          targetNamespace="http://forketyfork.ru/mtomsoap/schema"
+          xmlns:s="http://www.w3.org/2001/XMLSchema"
+          xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+
+    <s:element name="SampleRequest">
+        <s:annotation>
+            <s:documentation>Service request</s:documentation>
+        </s:annotation>
+        <s:complexType>
+            <s:sequence>
+                <s:element name="text" type="s:string" />
+                <s:element name="file" type="s:base64Binary" xmime:expectedContentTypes="*/*" />
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+
+    <s:element name="SampleResponse">
+        <s:annotation>
+            <s:documentation>Service response</s:documentation>
+        </s:annotation>
+        <s:complexType>
+            <s:attribute name="text" type="s:string" />
+        </s:complexType>
+    </s:element>
+
+</s:schema>

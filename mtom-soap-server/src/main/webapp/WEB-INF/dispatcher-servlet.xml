@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <!-- To substitute settings placeholders  -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="classpath:settings.properties"/>
+
+    <!-- The service bean -->
+    <bean class="ru.forketyfork.mtomsoap.server.SampleServiceEndpoint" p:uploadPath="${upload.path}"/>
+
+    <!-- SAAJ message factory configured for SOAP v1.2 -->
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"
+          p:soapVersion="#{T(org.springframework.ws.soap.SoapVersion).SOAP_12}"/>
+
+    <!-- JAXB2 Marshaller configured for MTOM -->
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller"
+          p:contextPath="ru.forketyfork.mtomsoap.schema"
+          p:mtomEnabled="true"/>
+
+    <!-- Endpoint mapping for the @PayloadRoot annotation -->
+    <bean class="org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping" />
+
+    <!-- Endpoint adapter to marshal endpoint method arguments and return values as JAXB2 objects -->
+    <bean class="org.springframework.ws.server.endpoint.adapter.DefaultMethodEndpointAdapter">
+        <property name="methodArgumentResolvers">
+            <list>
+                <ref bean="marshallingPayloadMethodProcessor" />
+            </list>
+        </property>
+        <property name="methodReturnValueHandlers">
+            <list>
+                <ref bean="marshallingPayloadMethodProcessor" />
+            </list>
+        </property>
+    </bean>
+
+    <!-- JAXB@ Marshaller/Unmarshaller for method arguments and return values -->
+    <bean id="marshallingPayloadMethodProcessor" class="org.springframework.ws.server.endpoint.adapter.method.MarshallingPayloadMethodProcessor">
+        <constructor-arg ref="jaxb2Marshaller" />
+    </bean>
+
+</beans>
