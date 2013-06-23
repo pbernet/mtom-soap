@@ -21,7 +21,7 @@ An example project that demonstrates sending large files via SOAP with attachmen
 
 ### Running the example
 
-1. Run mvn clean package. The CXF and JAXB2 classes will be generated.
+1. Run `mvn clean package`. The CXF and JAXB2 classes will be generated.
 2. Deploy the mtom-soap-server service on Apache Tomcat.
 3. Start Apache Tomcat with JVM argument `-Dsaaj.use.mimepull=true` — this enables attachment streaming for Sun's implementation of SAAJ bundled with Oracle JDK.
 4. Run the SampleClient class from mtom-soap-client. It takes the name of the file to attach as an argument.
