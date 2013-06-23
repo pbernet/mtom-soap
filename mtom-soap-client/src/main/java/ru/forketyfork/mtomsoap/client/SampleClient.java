@@ -1,6 +1,3 @@
-/*
- * (c) КАЦИТ, 2013. Все права защищены.
- */
 package ru.forketyfork.mtomsoap.client;
 
 import org.apache.cxf.frontend.ClientProxy;

@@ -1,6 +1,3 @@
-/*
- * (c) КАЦИТ, 2013. Все права защищены.
- */
 package ru.forketyfork.mtomsoap.server;
 
 import org.springframework.web.WebApplicationInitializer;
