@@ -36,7 +36,7 @@
         </property>
     </bean>
 
-    <!-- JAXB@ Marshaller/Unmarshaller for method arguments and return values -->
+    <!-- JAXB2 Marshaller/Unmarshaller for method arguments and return values -->
     <bean id="marshallingPayloadMethodProcessor" class="org.springframework.ws.server.endpoint.adapter.method.MarshallingPayloadMethodProcessor">
         <constructor-arg ref="jaxb2Marshaller" />
     </bean>
